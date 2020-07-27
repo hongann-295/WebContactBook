@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Database\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WebContactBook.DAL.Interface\WebContactBook.DAL.Interface.csproj" />
+    <ProjectReference Include="..\WebContactBook.DAL\WebContactBook.DAL.csproj" />
+    <ProjectReference Include="..\WebContactBook.Domain\WebContactBook.Domain.csproj" />
+  </ItemGroup>
+
+
+</Project>
