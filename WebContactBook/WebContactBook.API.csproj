@@ -18,7 +18,6 @@
   <ItemGroup>
     <Folder Include="Database\Data\" />
     <Folder Include="Database\Init\" />
-    <Folder Include="Database\Schema\" />
   </ItemGroup>
 
 
