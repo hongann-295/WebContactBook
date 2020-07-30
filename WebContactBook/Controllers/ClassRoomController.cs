@@ -25,5 +25,11 @@ namespace WebContactBook.API.Controllers
         {
             return await classRoomRepository.Gets();
         }
+        [HttpGet]
+        [Route("/api/classRoom/getsByCourseIdAndGradeId/{courseId},{gradeId}")]
+        public async Task<IEnumerable<ViewClass>> GetsByCourseIdAndGradeId(int courseId, int gradeId)
+        {
+            return await classRoomRepository.GetsByCourseIdAndGradeId(courseId, gradeId);
+        }
     }
 }

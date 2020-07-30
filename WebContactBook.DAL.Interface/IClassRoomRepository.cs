@@ -9,5 +9,6 @@ namespace WebContactBook.DAL.Interface
     public interface IClassRoomRepository
     {
         Task<IEnumerable<ViewClass>> Gets();
+        Task<IEnumerable<ViewClass>> GetsByCourseIdAndGradeId(int courseId, int gradeId);
     }
 }

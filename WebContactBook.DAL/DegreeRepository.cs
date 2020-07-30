@@ -7,5 +7,6 @@ namespace WebContactBook.DAL
 {
     public class DegreeRepository : BaseRepository, IDegreeRepository
     {
+
     }
 }

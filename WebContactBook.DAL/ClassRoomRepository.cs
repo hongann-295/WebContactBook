@@ -15,5 +15,16 @@ namespace WebContactBook.DAL
         {
             return await SqlMapper.QueryAsync<ViewClass>(connection, "sp_Get_ClassRoomsAll", CommandType.StoredProcedure);
         }
+
+        public async Task<IEnumerable<ViewClass>> GetsByCourseIdAndGradeId(int courseId, int gradeId)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@CourseId", courseId);
+            parameters.Add("@GradeId", gradeId);
+            return await SqlMapper.QueryAsync<ViewClass>(cnn: connection,
+                        param: parameters,
+                        sql: "sp_Get_ClassRooms_ByCourseIdAndGradeId",
+                        commandType: CommandType.StoredProcedure);
+        }
     }
 }
