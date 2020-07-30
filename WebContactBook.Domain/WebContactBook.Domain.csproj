@@ -14,7 +14,6 @@
     <Folder Include="Repuests\Student\" />
     <Folder Include="Repuests\Semester\" />
     <Folder Include="Repuests\Religion\" />
-    <Folder Include="Responses\Nation\" />
     <Folder Include="Responses\Job\" />
     <Folder Include="Responses\Degree\" />
     <Folder Include="Responses\Semester\" />
