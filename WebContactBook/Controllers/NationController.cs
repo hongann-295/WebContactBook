@@ -61,11 +61,11 @@ namespace WebContactBook.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete]
-        [Route("/api/nation/delete/{id}")]
-        public async Task<DeleteNationResult> Delete(int id)
+        [HttpGet]
+        [Route("/api/nation/delete/{deleteItem}")]
+        public async Task<DeleteNationResult> Delete(string deleteItem)
         {
-            return await nationRepository.Delete(id);
+            return await nationRepository.Delete(deleteItem);
         }
     }
 

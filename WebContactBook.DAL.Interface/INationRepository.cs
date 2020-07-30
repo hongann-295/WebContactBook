@@ -11,7 +11,7 @@ namespace WebContactBook.DAL.Interface
     {
         Task<IEnumerable<Nation>> Gets();
         Task<Nation> Get(int nationId);
-        Task<DeleteNationResult> Delete(int nationId);
+        Task<DeleteNationResult> Delete(string nationIds);
         Task<SaveNationResult> Save(SaveNationRequest request);
     }
 }

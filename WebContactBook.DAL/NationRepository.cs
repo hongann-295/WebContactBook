@@ -34,10 +34,10 @@ namespace WebContactBook.DAL
             }
         }
 
-        public async Task<DeleteNationResult> Delete(int nationId)
+        public async Task<DeleteNationResult> Delete(string nationIds)
         {
             DynamicParameters parameters = new DynamicParameters();
-            parameters.Add("@NationId", nationId);
+            parameters.Add("@NationIds", nationIds);
             return await SqlMapper.QueryFirstOrDefaultAsync<DeleteNationResult>(cnn: connection,
                              param: parameters,
                             sql: "sp_Delete_Nation",
