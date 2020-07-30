@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
 using WebContactBook.DAL.Interface;
+using WebContactBook.Domain.Repuests.Nation;
 using WebContactBook.Domain.Responses.Nation;
 
 namespace WebContactBook.DAL
@@ -11,7 +12,7 @@ namespace WebContactBook.DAL
     public class NationRepository : BaseRepository, INationRepository
     {
 
-        public async Task<SaveNationResult> Save(Nation request)
+        public async Task<SaveNationResult> Save(SaveNationRequest request)
         {
             try
             {
@@ -57,14 +58,5 @@ namespace WebContactBook.DAL
         {
             return await SqlMapper.QueryAsync<Nation>(connection, "sp_Gets_Nation", CommandType.StoredProcedure);
         }
-
-        //public async Task<IEnumerable<Department>> Search(string keyword)
-        //{
-        //    DynamicParameters parameters = new DynamicParameters();
-        //    parameters.Add("@keyword", keyword);
-        //    return await SqlMapper.QueryAsync<Department>(cnn: conn, sql: "sp_SearchDepartment",
-        //                                       param: parameters,
-        //                                       commandType: CommandType.StoredProcedure);
-        //}
     }
 }
