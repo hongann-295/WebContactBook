@@ -4,4 +4,18 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Repuests\Class\" />
+    <Folder Include="Repuests\Course\" />
+    <Folder Include="Repuests\Degree\" />
+    <Folder Include="Repuests\Grade\" />
+    <Folder Include="Repuests\Job\" />
+    <Folder Include="Repuests\Student\" />
+    <Folder Include="Repuests\Semester\" />
+    <Folder Include="Repuests\Religion\" />
+    <Folder Include="Responses\Job\" />
+    <Folder Include="Responses\Degree\" />
+    <Folder Include="Responses\Semester\" />
+  </ItemGroup>
+
 </Project>

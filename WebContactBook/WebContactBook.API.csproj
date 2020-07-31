@@ -5,13 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Database\" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\WebContactBook.DAL.Interface\WebContactBook.DAL.Interface.csproj" />
     <ProjectReference Include="..\WebContactBook.DAL\WebContactBook.DAL.csproj" />
     <ProjectReference Include="..\WebContactBook.Domain\WebContactBook.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Database\Data\" />
+    <Folder Include="Database\Init\" />
   </ItemGroup>
 
 
