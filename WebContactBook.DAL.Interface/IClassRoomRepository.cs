@@ -10,5 +10,7 @@ namespace WebContactBook.DAL.Interface
     {
         Task<IEnumerable<ViewClass>> Gets();
         Task<IEnumerable<ViewClass>> GetsByCourseIdAndGradeId(int courseId, int gradeId);
+        Task<DeleteClassRoomResults> Delete(int classId);
+        Task<SaveClassRoomResults> Save(ClassRoom request);
     }
 }
