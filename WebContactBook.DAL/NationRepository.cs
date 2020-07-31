@@ -44,6 +44,16 @@ namespace WebContactBook.DAL
                             commandType: CommandType.StoredProcedure);
         }
 
+        public async Task<DeleteNationResult> DeleteById(int nationId)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@NationId", nationId);
+            return await SqlMapper.QueryFirstOrDefaultAsync<DeleteNationResult>(cnn: connection,
+                             param: parameters,
+                            sql: "sp_Delete_Nation_ById",
+                            commandType: CommandType.StoredProcedure);
+        }
+
         public async Task<Nation> Get(int nationId)
         {
             DynamicParameters parameters = new DynamicParameters();
@@ -57,6 +67,16 @@ namespace WebContactBook.DAL
         public async Task<IEnumerable<Nation>> Gets()
         {
             return await SqlMapper.QueryAsync<Nation>(connection, "sp_Gets_Nation", CommandType.StoredProcedure);
+        }
+
+        public async Task<IEnumerable<StudentView>> GetStudents(int nationId)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@NationId", nationId);
+            return await SqlMapper.QueryAsync<StudentView>(cnn: connection,
+                        param: parameters,
+                        sql: "sp_Get_Students_ByNationId",
+                        commandType: CommandType.StoredProcedure);
         }
     }
 }
