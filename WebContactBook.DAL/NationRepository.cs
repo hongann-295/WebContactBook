@@ -68,5 +68,15 @@ namespace WebContactBook.DAL
         {
             return await SqlMapper.QueryAsync<Nation>(connection, "sp_Gets_Nation", CommandType.StoredProcedure);
         }
+
+        public async Task<IEnumerable<StudentView>> GetStudents(int nationId)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@NationId", nationId);
+            return await SqlMapper.QueryAsync<StudentView>(cnn: connection,
+                        param: parameters,
+                        sql: "sp_Get_Students_ByNationId",
+                        commandType: CommandType.StoredProcedure);
+        }
     }
 }

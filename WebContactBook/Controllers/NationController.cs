@@ -21,6 +21,13 @@ namespace WebContactBook.API.Controllers
             this.nationRepository = nationRepository;
         }
 
+        [HttpGet]
+        [Route("/api/nation/getStudents/{nationId}")]
+        public async Task<IEnumerable<StudentView>> GetStudents(int nationId)
+        {
+            return await nationRepository.GetStudents(nationId);
+        }
+
 
         /// <summary>
         /// Get all nation in DB
