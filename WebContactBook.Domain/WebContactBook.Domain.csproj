@@ -17,7 +17,6 @@
     <Folder Include="Responses\Job\" />
     <Folder Include="Responses\Degree\" />
     <Folder Include="Responses\Semester\" />
-    <Folder Include="Responses\Religion\" />
   </ItemGroup>
 
 </Project>
