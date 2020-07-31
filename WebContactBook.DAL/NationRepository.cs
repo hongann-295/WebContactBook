@@ -44,6 +44,16 @@ namespace WebContactBook.DAL
                             commandType: CommandType.StoredProcedure);
         }
 
+        public async Task<DeleteNationResult> DeleteById(int nationId)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@NationId", nationId);
+            return await SqlMapper.QueryFirstOrDefaultAsync<DeleteNationResult>(cnn: connection,
+                             param: parameters,
+                            sql: "sp_Delete_Nation_ById",
+                            commandType: CommandType.StoredProcedure);
+        }
+
         public async Task<Nation> Get(int nationId)
         {
             DynamicParameters parameters = new DynamicParameters();
