@@ -10,7 +10,6 @@
     <Folder Include="Repuests\Degree\" />
     <Folder Include="Repuests\Grade\" />
     <Folder Include="Repuests\Job\" />
-    <Folder Include="Repuests\Nation\" />
     <Folder Include="Repuests\Student\" />
     <Folder Include="Repuests\Semester\" />
     <Folder Include="Repuests\Religion\" />

@@ -3,10 +3,12 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebContactBook.DAL.Interface;
+using WebContactBook.Domain.Repuests.Nation;
 using WebContactBook.Domain.Responses.Nation;
 
 namespace WebContactBook.API.Controllers
 {
+    [ApiController]
     public class NationController : ControllerBase
     {
         private readonly ILogger<NationController> _logger;
@@ -19,9 +21,16 @@ namespace WebContactBook.API.Controllers
             this.nationRepository = nationRepository;
         }
 
+        [HttpGet]
+        [Route("/api/nation/getStudents/{nationId}")]
+        public async Task<IEnumerable<StudentView>> GetStudents(int nationId)
+        {
+            return await nationRepository.GetStudents(nationId);
+        }
+
 
         /// <summary>
-        /// Get all department in DB
+        /// Get all nation in DB
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -32,7 +41,7 @@ namespace WebContactBook.API.Controllers
         }
 
         /// <summary>
-        /// Get department by departmentid
+        /// Get nation by nation id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -42,26 +51,36 @@ namespace WebContactBook.API.Controllers
         {
             return await nationRepository.Get(id);
         }
-
+        /// <summary>
+        /// create/ update a nation
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("/api/nation/save")]
-        public async Task<SaveNationResult> Save(Nation request)
+        public async Task<SaveNationResult> Save(SaveNationRequest request)
         {
             return await nationRepository.Save(request);
         }
 
-        [HttpDelete]
-        [Route("/api/nation/delete/{id}")]
-        public async Task<DeleteNationResult> Delete(int id)
+        /// <summary>
+        /// delete a nation
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/api/nation/delete/{deleteItem}")]
+        public async Task<DeleteNationResult> Delete(string deleteItem)
         {
-            return await nationRepository.Delete(id);
+            return await nationRepository.Delete(deleteItem);
         }
 
-        //[HttpGet("/api/department/search")]
-        //public async Task<IEnumerable<Department>> Search(string keyword)
-        //{
-        //    //keyword = string.IsNullOrEmpty(keyword) ? string.Empty : keyword;
-        //    return await departmentService.Search(keyword);
+        [HttpDelete]
+        [Route("/api/nation/deletebyid/{id}")]
+        public async Task<DeleteNationResult> DeleteById(int id)
+        {
+            return await nationRepository.DeleteById(id);
+        }
     }
 
 }

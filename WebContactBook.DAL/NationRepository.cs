@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
 using WebContactBook.DAL.Interface;
+using WebContactBook.Domain.Repuests.Nation;
 using WebContactBook.Domain.Responses.Nation;
 
 namespace WebContactBook.DAL
@@ -11,7 +12,7 @@ namespace WebContactBook.DAL
     public class NationRepository : BaseRepository, INationRepository
     {
 
-        public async Task<SaveNationResult> Save(Nation request)
+        public async Task<SaveNationResult> Save(SaveNationRequest request)
         {
             try
             {
@@ -33,13 +34,23 @@ namespace WebContactBook.DAL
             }
         }
 
-        public async Task<DeleteNationResult> Delete(int nationId)
+        public async Task<DeleteNationResult> Delete(string nationIds)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@NationIds", nationIds);
+            return await SqlMapper.QueryFirstOrDefaultAsync<DeleteNationResult>(cnn: connection,
+                             param: parameters,
+                            sql: "sp_Delete_Nation",
+                            commandType: CommandType.StoredProcedure);
+        }
+
+        public async Task<DeleteNationResult> DeleteById(int nationId)
         {
             DynamicParameters parameters = new DynamicParameters();
             parameters.Add("@NationId", nationId);
             return await SqlMapper.QueryFirstOrDefaultAsync<DeleteNationResult>(cnn: connection,
                              param: parameters,
-                            sql: "sp_Delete_Nation",
+                            sql: "sp_Delete_Nation_ById",
                             commandType: CommandType.StoredProcedure);
         }
 
@@ -58,13 +69,14 @@ namespace WebContactBook.DAL
             return await SqlMapper.QueryAsync<Nation>(connection, "sp_Gets_Nation", CommandType.StoredProcedure);
         }
 
-        //public async Task<IEnumerable<Department>> Search(string keyword)
-        //{
-        //    DynamicParameters parameters = new DynamicParameters();
-        //    parameters.Add("@keyword", keyword);
-        //    return await SqlMapper.QueryAsync<Department>(cnn: conn, sql: "sp_SearchDepartment",
-        //                                       param: parameters,
-        //                                       commandType: CommandType.StoredProcedure);
-        //}
+        public async Task<IEnumerable<StudentView>> GetStudents(int nationId)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@NationId", nationId);
+            return await SqlMapper.QueryAsync<StudentView>(cnn: connection,
+                        param: parameters,
+                        sql: "sp_Get_Students_ByNationId",
+                        commandType: CommandType.StoredProcedure);
+        }
     }
 }
